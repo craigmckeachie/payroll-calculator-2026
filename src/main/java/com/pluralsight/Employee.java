@@ -64,4 +64,36 @@ public class Employee {
                 ", payRate=" + payRate +
                 '}';
     }
+
+    /**
+     * Returns a pipe-delimited string matching your sample data format:
+     * id|name|hours-worked|pay-rate
+     */
+    public String toCSV() {
+        return employeeId + "|" + name + "|" + hoursWorked + "|" + payRate;
+    }
+
+    /**
+     * Returns a neatly padded, single-line text row ideal for console tables.
+     */
+    public String toRow() {
+        return String.format("%-5d | %-20s | %-12.1f | %-8.2f",
+                employeeId, name, hoursWorked, payRate);
+    }
+
+
+    /**
+     * Returns a sleek, box-drawn card representation of the employee.
+     */
+    public String toCard() {
+        return String.format(
+                "┌────────────────────────────────┐\n" +
+                        "│ ID:       %-20d │\n" +
+                        "│ Name:     %-20s │\n" +
+                        "│ Hours:    %-20.1f │\n" +
+                        "│ Pay Rate: $%-19.2f │\n" +
+                        "└────────────────────────────────┘",
+                employeeId, name, hoursWorked, payRate
+        );
+    }
 }
