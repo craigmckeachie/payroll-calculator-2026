@@ -11,21 +11,23 @@ public class App {
             FileReader fileReader = new FileReader("employees.csv");
             BufferedReader bufferedReader = new BufferedReader(fileReader);
 
-            System.out.println("______________________");
+
             // read a line into line, then check it isn't null, all in one step
             String line;
+            String headerLine = bufferedReader.readLine(); //ignore header
+
             while ((line = bufferedReader.readLine()) != null) {
                 //Split it into individual fields using the | character as the delimiter
                 String[] fields = line.split(Pattern.quote("|"));
 
 
                 //print each field in the line
-                System.out.println(fields[0]);
-                System.out.println(fields[1]);
-                System.out.println(fields[2]);
-                System.out.println(fields[3]);
-                System.out.println("______________________");
-
+                int employeeId = Integer.parseInt(fields[0]);
+                String name = fields[1];
+                Double hoursWorked = Double.parseDouble(fields[2]);
+                Double payRate = Double.parseDouble(fields[3]);
+                Employee employee = new Employee(employeeId,name,hoursWorked, payRate);
+                System.out.println(employee.toString());
 
             }
 
